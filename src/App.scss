@@ -1,0 +1,10 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 60vw auto;
+  background-color: #f0eeee;
+  column-gap: 5vw;
+}
+
+.grid-item {
+  padding: 3vw;
+}
