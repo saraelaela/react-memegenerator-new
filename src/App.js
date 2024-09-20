@@ -1,6 +1,6 @@
 import './App.scss';
 import './ExampleComponent.js';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ExampleComponent from './ExampleComponent.js';
 import Test from './Test.js';
 
@@ -14,29 +14,19 @@ export default function App() {
   const baseUrl = 'https://api.memegen.link/images/';
 
   const fullUrl = `${baseUrl}${updateText}/${updateTop}/${updateBottom}`;
-
-  useEffect(() => {
-    if (updateTop === '' && updateText === '' && updateBottom === '') {
-      setStartImage(
-        'https://api.memegen.link/images/buzz/memes/memes_everywhere.png',
-      );
-    } else {
-      const fullUrl = `${baseUrl}${updateText}/${updateTop}/${updateBottom}`;
-      setStartImage(fullUrl);
-    }
-  }, [updateText, updateTop, updateBottom]);
+  console.log(fullUrl);
 
   return (
     <div className="grid-container">
       <div className="grid-item">
-        {startImage && <img src={startImage} alt="Generated Meme" />}
         <ExampleComponent
-          // memeUrl={memeUrl}
-
           baseUrl={baseUrl}
           updateText={updateText}
           updateTop={updateTop}
           updateBottom={updateBottom}
+          fullUrl={fullUrl}
+          startImage={startImage}
+          setStartImage={setStartImage}
         />
       </div>
       <div className="grid-item grid-item2">

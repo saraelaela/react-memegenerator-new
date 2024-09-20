@@ -1,7 +1,5 @@
 import './Test.scss';
 import './UserInputText.js';
-import { useState } from 'react';
-import UserInputText from './UserInputText.js';
 
 export default function Test(props) {
   return (
@@ -20,26 +18,44 @@ export default function Test(props) {
           onSubmit={(event) => event.preventDefault()}
           id="myFormId"
         >
-          <label htmlFor="userInput" name="myLabel">
-            Meme URL 1{' '}
+          <label htmlFor="MemeTemplate" name="myLabel">
+            Meme template{' '}
           </label>
           <input
+            id="MemeTemplate"
             value={props.updateText}
             onChange={(event) => props.setUpdateText(event.currentTarget.value)}
           />
-
+          <label htmlFor="userInputTop" name="myLabel">
+            Top Line
+          </label>
           <input
+            id="userInputTop"
             value={props.updateTop}
             onChange={(event) => props.setUpdateTop(event.currentTarget.value)}
           />
 
+          <label htmlFor="userInputBottom" name="myLabel">
+            Bottom Line
+          </label>
           <input
+            id="userInputBottom"
             value={props.updateBottom}
             onChange={(event) =>
               props.setUpdateBottom(event.currentTarget.value)
             }
           />
         </form>
+        <button
+          onClick={() => {
+            const link = document.createElement('a');
+            link.href = props.fullUrl;
+            link.download = 'meme.png';
+            link.click();
+          }}
+        >
+          Download
+        </button>
       </div>
     </div>
   );
